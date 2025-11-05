@@ -1,0 +1,1 @@
+SELECT name AS patient_name, age AS patient_age FROM patients;

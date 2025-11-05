@@ -1,0 +1,4 @@
+Select Distinct
+service AS hospital_services
+From
+services_weekly;

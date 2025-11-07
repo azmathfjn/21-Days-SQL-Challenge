@@ -1,0 +1,4 @@
+Select Sum(patients_admitted) As total_admitted_patients,
+Sum(patients_refused) As total_patients_refused,
+ROUND(AVG(patient_satisfaction), 2) AS avg_satisfaction
+FROM services_weekly;

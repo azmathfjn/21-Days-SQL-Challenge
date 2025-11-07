@@ -1,0 +1,1 @@
+Select AVG(satisfaction) AS satisfaction_score FROM patients;

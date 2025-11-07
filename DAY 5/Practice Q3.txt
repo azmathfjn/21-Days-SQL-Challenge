@@ -1,0 +1,3 @@
+Select MIN(age) AS youngest,
+        MAX(age) AS oldest
+FROM patients;		

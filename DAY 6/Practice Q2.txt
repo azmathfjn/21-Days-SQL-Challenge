@@ -1,0 +1,3 @@
+SELECT service,
+AVG(age) AS avg_age FROM patients
+GROUP BY service;

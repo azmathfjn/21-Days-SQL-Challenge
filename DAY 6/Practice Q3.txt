@@ -1,0 +1,3 @@
+SELECT role,
+COUNT(*) AS total_staff FROM staff
+GROUP BY role;

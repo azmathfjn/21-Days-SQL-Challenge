@@ -1,0 +1,4 @@
+SELECT week, SUM(present) AS total_presence
+FROM staff_schedule
+GROUP BY week
+HAVING SUM(present) < 50;

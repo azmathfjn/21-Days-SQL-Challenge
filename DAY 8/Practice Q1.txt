@@ -1,0 +1,3 @@
+SELECT patient_id,
+UPPER(name) AS name_upper
+FROM patients;

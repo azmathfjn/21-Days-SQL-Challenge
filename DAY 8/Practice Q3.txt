@@ -1,0 +1,2 @@
+SELECT CONCAT(staff_id, '-', staff_name) AS staff_identifier
+FROM staff;

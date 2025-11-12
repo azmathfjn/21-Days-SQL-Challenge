@@ -1,0 +1,4 @@
+SELECT patient_id,
+name,
+(departure_date - arrival_date) AS length_of_stay_days
+FROM patients;

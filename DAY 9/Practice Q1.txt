@@ -1,0 +1,4 @@
+SELECT patient_id,
+name,
+EXTRACT(YEAR FROM arrival_date)::int AS arrival_year
+FROM patients;

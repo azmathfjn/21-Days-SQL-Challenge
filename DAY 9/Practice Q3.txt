@@ -1,0 +1,5 @@
+SELECT patient_id,
+name,
+arrival_date
+FROM patients
+WHERE EXTRACT(MONTH FROM arrival_date) = 3;

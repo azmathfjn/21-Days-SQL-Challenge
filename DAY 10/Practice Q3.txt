@@ -1,0 +1,11 @@
+SELECT 
+    patient_id,
+    name,
+    age,
+    CASE
+        WHEN age BETWEEN 0 AND 18 THEN '0-18'
+        WHEN age BETWEEN 19 AND 40 THEN '19-40'
+        WHEN age BETWEEN 41 AND 65 THEN '41-65'
+        ELSE '65+'
+    END AS age_group
+FROM patients;

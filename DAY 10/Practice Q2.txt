@@ -1,0 +1,9 @@
+SELECT 
+    staff_id,
+    name,
+    role,
+    CASE
+        WHEN role IN ('doctor', 'nurse') THEN 'Medical'
+        ELSE 'Support'
+    END AS role_category
+FROM staff;

@@ -1,0 +1,13 @@
+SELECT 
+    service,
+    COUNT(*) AS total_patients_admitted,
+    AVG(satisfaction) AS avg_satisfaction,
+    CASE 
+        WHEN AVG(satisfaction) >= 85 THEN 'Excellent'
+        WHEN AVG(satisfaction) >= 75 THEN 'Good'
+        WHEN AVG(satisfaction) >= 65 THEN 'Fair'
+        ELSE 'Needs Improvement'
+    END AS performance_category
+FROM patients
+GROUP BY service
+ORDER BY avg_satisfaction DESC;

@@ -1,0 +1,5 @@
+SELECT *
+FROM services_weekly
+WHERE event IS NULL
+   OR event = ''
+   OR LOWER(event) = 'none';

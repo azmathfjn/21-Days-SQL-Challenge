@@ -1,0 +1,5 @@
+SELECT COUNT(*) AS null_or_empty_event_count
+FROM services_weekly
+WHERE event IS NULL
+   OR event = ''
+   OR LOWER(event) = 'none';

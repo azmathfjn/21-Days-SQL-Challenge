@@ -1,0 +1,10 @@
+SELECT 
+    p.patient_id,
+    p.name AS patient_name,
+    p.service,
+    s.staff_id,
+    s.staff_name,
+    s.role
+FROM patients p
+JOIN staff s 
+    ON p.service = s.service;

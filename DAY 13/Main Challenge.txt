@@ -1,0 +1,19 @@
+SELECT 
+    p.patient_id,
+    p.name AS patient_name,
+    p.age,
+    p.service,
+    sc.total_staff
+FROM patients p
+JOIN (
+    SELECT 
+        service,
+        COUNT(*) AS total_staff
+    FROM staff
+    GROUP BY service
+    HAVING COUNT(*) > 5
+) sc
+ON p.service = sc.service
+ORDER BY 
+    sc.total_staff DESC,
+    p.name ASC;

@@ -1,0 +1,12 @@
+SELECT 
+    sw.week,
+    sw.service,
+    sw.patient_satisfaction,
+    sw.staff_morale,
+    sw.event,
+    s.staff_id,
+    s.staff_name,
+    s.role
+FROM services_weekly sw
+JOIN staff s
+    ON sw.service = s.service;

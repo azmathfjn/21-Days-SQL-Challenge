@@ -1,0 +1,12 @@
+SELECT
+    p.patient_id,
+    p.name AS patient_name,
+    p.age,
+    p.service,
+    sw.week,
+    sw.patient_satisfaction,
+    sw.staff_morale,
+    sw.event
+FROM patients p
+LEFT JOIN services_weekly sw
+    ON p.service = sw.service;

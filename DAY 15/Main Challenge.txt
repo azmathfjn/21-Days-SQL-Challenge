@@ -1,0 +1,24 @@
+SELECT 
+    sw.service,
+    sw.patients_admitted,
+    sw.patients_refused,
+    sw.patient_satisfaction AS avg_satisfaction,
+
+    COUNT(DISTINCT st.staff_id) AS staff_assigned,
+    COUNT(DISTINCT ss.staff_id) AS staff_present_week20
+
+FROM services_weekly sw
+LEFT JOIN staff st 
+    ON sw.service = st.service
+LEFT JOIN staff_schedule ss
+    ON st.staff_id = ss.staff_id 
+    AND ss.week = 20
+
+WHERE sw.week = 20
+GROUP BY 
+    sw.service,
+    sw.patients_admitted,
+    sw.patients_refused,
+    sw.patient_satisfaction
+ORDER BY 
+    sw.patients_admitted DESC;

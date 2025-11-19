@@ -1,0 +1,14 @@
+SELECT 
+    p.patient_id,
+    p.name AS patient_name,
+    p.service,
+    s.staff_id,
+    s.staff_name,
+    s.role,
+    ss.week AS staff_available_week
+FROM patients p
+LEFT JOIN staff s
+    ON p.service = s.service
+LEFT JOIN staff_schedule ss
+    ON s.staff_id = ss.staff_id
+ORDER BY p.patient_id;

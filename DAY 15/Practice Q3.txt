@@ -1,0 +1,15 @@
+SELECT
+    p.patient_id,
+    p.name AS patient_name,
+    p.service,
+    s.staff_id,
+    s.staff_name,
+    sw.week,
+    sw.patients_admitted,
+    sw.patient_satisfaction
+FROM patients p
+LEFT JOIN staff s
+    ON p.service = s.service
+LEFT JOIN services_weekly sw
+    ON p.service = sw.service
+ORDER BY p.patient_id;

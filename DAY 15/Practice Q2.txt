@@ -1,0 +1,15 @@
+SELECT 
+    sw.week,
+    sw.service,
+    sw.patients_admitted,
+    sw.patients_refused,
+    sw.patient_satisfaction,
+    sw.staff_morale,
+    s.staff_id,
+    s.staff_name,
+    ss.week AS staff_present_week
+FROM services_weekly sw
+LEFT JOIN staff s
+    ON sw.service = s.service
+LEFT JOIN staff_schedule ss
+    ON s.staff_id = ss.staff_id;

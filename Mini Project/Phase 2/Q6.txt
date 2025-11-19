@@ -1,0 +1,4 @@
+SELECT *
+FROM orders
+WHERE date = '2015-02-15'
+   OR time >= '20:00:00';

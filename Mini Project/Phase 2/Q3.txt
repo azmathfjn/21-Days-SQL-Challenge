@@ -1,0 +1,3 @@
+SELECT *
+FROM pizzas
+WHERE size IN ('L', 'XL');

@@ -1,0 +1,6 @@
+SELECT 
+    pizza_type_id,
+    name,
+    COALESCE(ingredients, 'Missing Data') AS ingredients
+FROM pizza_types
+LIMIT 5;

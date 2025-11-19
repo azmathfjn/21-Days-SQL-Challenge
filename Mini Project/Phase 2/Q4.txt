@@ -1,0 +1,3 @@
+SELECT *
+FROM pizzas
+WHERE price BETWEEN 15 AND 17;

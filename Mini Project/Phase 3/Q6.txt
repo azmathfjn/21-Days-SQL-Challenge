@@ -1,0 +1,4 @@
+SELECT p.pizza_id
+FROM pizzas p
+LEFT JOIN order_details od ON p.pizza_id = od.pizza_id
+WHERE od.pizza_id IS NULL;

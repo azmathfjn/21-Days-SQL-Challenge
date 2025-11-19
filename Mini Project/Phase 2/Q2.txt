@@ -1,0 +1,3 @@
+SELECT *
+FROM pizzas
+ORDER BY price DESC;

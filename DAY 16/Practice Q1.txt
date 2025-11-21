@@ -1,0 +1,14 @@
+SELECT p.*
+FROM patients p
+WHERE p.service IN (
+    SELECT service
+    FROM staff
+    GROUP BY service
+    HAVING COUNT(*) >
+        (SELECT AVG(staff_count)
+         FROM (
+             SELECT service, COUNT(*) AS staff_count
+             FROM staff
+             GROUP BY service
+         ) AS t)
+);

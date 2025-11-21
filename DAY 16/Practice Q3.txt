@@ -1,0 +1,8 @@
+SELECT p.*
+FROM patients p
+WHERE p.service IN (
+    SELECT service
+    FROM services_weekly
+    GROUP BY service
+    HAVING SUM(patients_admitted) > 1000
+);

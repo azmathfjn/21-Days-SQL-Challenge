@@ -1,0 +1,7 @@
+SELECT s.*
+FROM staff s
+WHERE s.service IN (
+    SELECT DISTINCT service
+    FROM services_weekly
+    WHERE patient_satisfaction < 70
+);

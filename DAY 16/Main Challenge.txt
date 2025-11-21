@@ -1,0 +1,23 @@
+SELECT 
+    p.patient_id,
+    p.name,
+    p.service,
+    p.satisfaction
+FROM patients p
+WHERE p.service IN (
+
+    -- services with at least one week having refused patients
+    SELECT service
+    FROM services_weekly
+    GROUP BY service
+    HAVING SUM(patients_refused) > 0
+
+    INTERSECT
+
+    -- services with avg satisfaction < overall avg satisfaction
+    SELECT service
+    FROM services_weekly
+    GROUP BY service
+    HAVING AVG(patient_satisfaction) <
+        (SELECT AVG(patient_satisfaction) FROM services_weekly)
+);

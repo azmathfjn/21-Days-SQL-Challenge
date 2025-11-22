@@ -1,0 +1,11 @@
+SELECT 
+    p.patient_id,
+    p.name,
+    p.service,
+    p.satisfaction AS personal_satisfaction,
+    (
+        SELECT AVG(p2.satisfaction)
+        FROM patients p2
+        WHERE p2.service = p.service
+    ) AS service_avg_satisfaction
+FROM patients p;

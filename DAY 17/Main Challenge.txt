@@ -1,0 +1,23 @@
+WITH service_totals AS (
+    SELECT 
+        service,
+        COUNT(*) AS total_admitted
+    FROM patients
+    GROUP BY service
+),
+overall_avg AS (
+    SELECT AVG(total_admitted) AS avg_admissions
+    FROM service_totals
+)
+SELECT 
+    st.service,
+    st.total_admitted,
+    st.total_admitted - oa.avg_admissions AS diff_from_avg,
+    CASE
+        WHEN st.total_admitted > oa.avg_admissions THEN 'Above Average'
+        WHEN st.total_admitted = oa.avg_admissions THEN 'Average'
+        ELSE 'Below Average'
+    END AS rank_indicator
+FROM service_totals st
+CROSS JOIN overall_avg oa
+ORDER BY st.total_admitted DESC;

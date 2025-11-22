@@ -1,0 +1,13 @@
+WITH service_stats AS (
+    SELECT 
+        service,
+        COUNT(*) AS total_patients,
+        AVG(satisfaction) AS avg_satisfaction
+    FROM patients
+    GROUP BY service
+)
+SELECT 
+    service,
+    total_patients,
+    avg_satisfaction
+FROM service_stats;

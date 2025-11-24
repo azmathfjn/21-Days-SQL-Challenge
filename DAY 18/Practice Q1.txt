@@ -1,0 +1,7 @@
+SELECT name AS full_name
+FROM patients
+
+UNION
+
+SELECT staff_name AS full_name
+FROM staff;

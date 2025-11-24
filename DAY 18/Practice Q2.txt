@@ -1,0 +1,9 @@
+SELECT patient_id, name, satisfaction, 'High Satisfaction' AS category
+FROM patients
+WHERE satisfaction > 90
+
+UNION ALL
+
+SELECT patient_id, name, satisfaction, 'Low Satisfaction' AS category
+FROM patients
+WHERE satisfaction < 50;

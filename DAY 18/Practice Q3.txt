@@ -1,0 +1,7 @@
+SELECT name
+FROM patients
+
+UNION
+
+SELECT staff_name AS name
+FROM staff;

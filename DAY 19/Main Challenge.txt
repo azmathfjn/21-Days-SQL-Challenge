@@ -1,0 +1,20 @@
+SELECT 
+    service,
+    week,
+    patient_satisfaction,
+    patients_admitted,
+    rank_in_service
+FROM (
+    SELECT 
+        service,
+        week,
+        patient_satisfaction,
+        patients_admitted,
+        RANK() OVER (
+            PARTITION BY service
+            ORDER BY patient_satisfaction DESC
+        ) AS rank_in_service
+    FROM services_weekly
+) AS ranked
+WHERE rank_in_service <= 3
+ORDER BY service, rank_in_service;

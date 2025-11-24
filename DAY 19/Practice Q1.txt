@@ -1,0 +1,10 @@
+SELECT 
+    name,
+    patient_id,
+    service,
+    satisfaction,
+    RANK() OVER (
+        PARTITION BY service 
+        ORDER BY satisfaction DESC
+    ) AS satisfaction_rank
+FROM patients;

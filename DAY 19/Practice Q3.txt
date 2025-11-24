@@ -1,0 +1,8 @@
+SELECT 
+    service,
+    SUM(patients_admitted) AS total_admissions,
+    RANK() OVER (
+        ORDER BY SUM(patients_admitted) DESC
+    ) AS rank_by_admissions
+FROM services_weekly
+GROUP BY service;

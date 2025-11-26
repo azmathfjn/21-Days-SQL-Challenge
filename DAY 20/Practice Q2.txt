@@ -1,0 +1,11 @@
+SELECT
+    service,
+    week,
+    patient_satisfaction,
+    AVG(patient_satisfaction) OVER (
+        PARTITION BY service
+        ORDER BY week
+        ROWS BETWEEN 3 PRECEDING AND CURRENT ROW
+    ) AS moving_avg_4weeks
+FROM services_weekly
+ORDER BY service, week;

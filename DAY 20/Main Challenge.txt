@@ -1,0 +1,38 @@
+WITH base AS (
+    SELECT
+        service,
+        week,
+        patients_admitted,
+        patient_satisfaction,
+        AVG(patients_admitted) OVER (PARTITION BY service) AS service_avg
+    FROM services_weekly
+    WHERE week BETWEEN 10 AND 20
+),
+
+trend AS (
+    SELECT
+        service,
+        week,
+        patients_admitted,
+
+        -- Running total (cumulative)
+        SUM(patients_admitted) OVER (
+            PARTITION BY service
+            ORDER BY week
+        ) AS cumulative_admissions,
+
+        -- 3-week moving average of satisfaction
+        AVG(patient_satisfaction) OVER (
+            PARTITION BY service
+            ORDER BY week
+            ROWS BETWEEN 2 PRECEDING AND CURRENT ROW
+        ) AS moving_avg_satisfaction,
+
+        -- Difference from service average
+        (patients_admitted - service_avg) AS admission_diff
+    FROM base
+)
+
+SELECT *
+FROM trend
+ORDER BY service, week;

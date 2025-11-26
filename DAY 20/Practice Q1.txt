@@ -1,0 +1,10 @@
+SELECT 
+    service,
+    week,
+    patients_admitted,
+    SUM(patients_admitted) OVER (
+        PARTITION BY service 
+        ORDER BY week
+    ) AS running_total
+FROM services_weekly
+ORDER BY service, week;

@@ -1,0 +1,9 @@
+SELECT
+    week,
+    SUM(patients_admitted) AS weekly_admissions,
+    SUM(SUM(patients_admitted)) OVER (
+        ORDER BY week
+    ) AS cumulative_admissions
+FROM services_weekly
+GROUP BY week
+ORDER BY week;

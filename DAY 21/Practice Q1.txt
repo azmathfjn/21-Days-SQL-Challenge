@@ -1,0 +1,9 @@
+WITH service_stats AS (
+    SELECT
+        service,
+        SUM(patients_admitted) AS total_admissions,
+        AVG(patient_satisfaction) AS avg_satisfaction
+    FROM services_weekly
+    GROUP BY service
+)
+SELECT * FROM service_stats;

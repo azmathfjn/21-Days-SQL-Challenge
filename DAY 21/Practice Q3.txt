@@ -1,0 +1,18 @@
+WITH staff_util AS (
+    SELECT 
+        st.service,
+        COUNT(st.staff_id) AS total_staff
+    FROM staff st
+    GROUP BY st.service
+)
+SELECT 
+    s.service,
+    su.total_staff,
+    COUNT(p.patient_id) AS total_patients
+FROM staff_util su
+LEFT JOIN patients p 
+    ON su.service = p.service
+LEFT JOIN staff s 
+    ON su.service = s.service
+GROUP BY s.service, su.total_staff
+ORDER BY su.total_staff DESC;

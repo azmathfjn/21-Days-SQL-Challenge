@@ -1,0 +1,16 @@
+WITH admissions AS (
+    SELECT service, SUM(patients_admitted) AS total_admissions
+    FROM services_weekly
+    GROUP BY service
+),
+satisfaction AS (
+    SELECT service, AVG(patient_satisfaction) AS avg_satisfaction
+    FROM services_weekly
+    GROUP BY service
+)
+SELECT 
+    a.service,
+    a.total_admissions,
+    s.avg_satisfaction
+FROM admissions a
+JOIN satisfaction s USING(service);

@@ -1,0 +1,5 @@
+-- 1. Evidence at CEO Office -> show evidence and earliest found_time
+SELECT room, description, found_time
+FROM evidence
+WHERE room = 'CEO Office'
+ORDER BY found_time;

@@ -1,0 +1,7 @@
+-- 2. People who accessed CEO Office around 20:45 - 21:05 (covers slightly before/after)
+SELECT k.log_id, k.employee_id, emp.name, k.room, k.entry_time, k.exit_time
+FROM keycard_logs k
+JOIN employees emp ON emp.employee_id = k.employee_id
+WHERE k.room = 'CEO Office'
+  AND k.entry_time BETWEEN '2025-10-15 20:45' AND '2025-10-15 21:05'
+ORDER BY k.entry_time;

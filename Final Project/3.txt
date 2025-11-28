@@ -1,0 +1,9 @@
+-- 3. Find employees whose claim_time falls inside a keycard interval but claimed_location differs
+SELECT a.alibi_id, a.employee_id, emp.name,
+       a.claimed_location, a.claim_time,
+       k.room AS actual_room, k.entry_time, k.exit_time
+FROM alibis a
+JOIN keycard_logs k ON a.employee_id = k.employee_id
+JOIN employees emp ON emp.employee_id = a.employee_id
+WHERE a.claim_time BETWEEN k.entry_time AND k.exit_time
+  AND a.claimed_location <> k.room;

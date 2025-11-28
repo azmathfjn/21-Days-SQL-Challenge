@@ -1,0 +1,7 @@
+SELECT e.name AS killer
+FROM employees e
+JOIN keycard_logs k ON e.employee_id = k.employee_id
+JOIN alibis a ON e.employee_id = a.employee_id
+WHERE k.room = 'CEO Office'
+  AND k.entry_time BETWEEN '2025-10-15 20:45' AND '2025-10-15 21:05'
+  AND a.claimed_location <> k.room;

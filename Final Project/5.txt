@@ -1,0 +1,6 @@
+SELECT e.name, k.room, k.entry_time, ev.description
+FROM employees e
+JOIN keycard_logs k ON e.employee_id = k.employee_id
+JOIN evidence ev ON ev.room = 'CEO Office'
+WHERE k.room = 'CEO Office'
+  AND k.entry_time BETWEEN '2025-10-15 20:45' AND '2025-10-15 21:05';

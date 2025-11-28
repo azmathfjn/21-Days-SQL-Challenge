@@ -1,0 +1,9 @@
+-- 4. Calls between 20:50 and 21:00 (who called/received)
+SELECT c.call_id, c.caller_id, caller.name AS caller_name,
+       c.receiver_id, receiver.name AS receiver_name,
+       c.call_time, c.duration_sec
+FROM calls c
+LEFT JOIN employees caller  ON caller.employee_id = c.caller_id
+LEFT JOIN employees receiver ON receiver.employee_id = c.receiver_id
+WHERE c.call_time BETWEEN '2025-10-15 20:50' AND '2025-10-15 21:00'
+ORDER BY c.call_time;
